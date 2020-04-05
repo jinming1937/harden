@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "rootDir": ".",
+        // "jsx": "react",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "removeComments": true,
+        "preserveSymlinks": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "baseUrl": "./",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types"
+        ],
+        "paths": {}
+    },
+    "include": [],
+    "exclude": []
+}
