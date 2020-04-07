@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack, { Configuration, Options, Node } from 'webpack'
 import { EMode } from './type';
+import { entry, hwpList, rules, PORT, publicPath } from './webpack.base.config';
 
 function resolve(dir: string): string {
     return path.join(__dirname, '..', dir);
@@ -14,12 +15,10 @@ function resolve(dir: string): string {
 
 export default {
     context: path.resolve(__dirname, '../'),
-    entry: {
-        main: './src/main.ts'
-    },
+    entry,
     output: {
         filename: 'static/[name].js',
-        publicPath: '/'
+        publicPath,
     },
     resolve: {
         extensions: ['.ts', '.js', '.less'],
@@ -36,6 +35,7 @@ export default {
             //         "less-loader"
             //     ]
             // },
+            ...rules,
             {
                 test: /\.ts?$/,
                 use: [
@@ -100,19 +100,20 @@ export default {
         //     chunkFilename: "[id].css"
         // }),
 
-        new HtmlWebpackPlugin({
-            title: 'Knowledge',
-            filename: 'index.html',
-            chunks: ['main'],
-            template: path.join(__dirname, 'index.html'),
-            inject: true
-        }),
+        // new HtmlWebpackPlugin({
+        //     title: 'Knowledge',
+        //     filename: 'index.html',
+        //     chunks: ['main'],
+        //     template: path.join(__dirname, 'index.html'),
+        //     inject: true
+        // }),
+        ...hwpList,
 
         new webpack.HotModuleReplacementPlugin(),
 
         new FriendlyErrorsPlugin({
             compilationSuccessInfo: {
-                messages: [`Your application is running here: http://127.0.0.1:9961`],
+                messages: [`Your application is running here: http://127.0.0.1:8088`],
                 notes: []
             },
             onErrors(_: Severity, errors: string) {
@@ -128,27 +129,27 @@ export default {
         //     }
         // ])
     ],
-    devServer: {
-        clientLogLevel: 'warning',
-        historyApiFallback: {
-            rewrites: [{
-                from: /^\/$/,
-                to: '/index.html'
-            }]
-        },
-        hot: true,
-        contentBase: false,
-        compress: true,
-        host: 'localhost',
-        port: 9961,
-        overlay: {warnings: false, errors: true},
-        publicPath: '/',
-        quiet: true,
-        watchOptions: {
-            poll: true
-        },
-        disableHostCheck: true
-    },
+    // devServer: {
+    //     clientLogLevel: 'warning',
+    //     historyApiFallback: {
+    //         rewrites: [{
+    //             from: /^\/$/,
+    //             to: '/index.html'
+    //         }]
+    //     },
+    //     hot: true,
+    //     contentBase: false,
+    //     compress: true,
+    //     host: 'localhost',
+    //     port: PORT,
+    //     overlay: {warnings: false, errors: true},
+    //     publicPath: '/',
+    //     quiet: true,
+    //     watchOptions: {
+    //         poll: true
+    //     },
+    //     disableHostCheck: true
+    // },
     mode: EMode.dev,
     devtool: 'eval-source-map' as Options.Devtool,
     optimization: {

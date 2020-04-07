@@ -1,8 +1,19 @@
 {
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules"
+    ],
     "verbose": true,
-    "ignore": ["*.test.js", "fixtures/*", "node_modules/*", "src/*"],
+    "delay": 2000,
     "execMap": {
-        "rb": "ruby",
-        "pde": "processing --sketch={{pwd}} --run"
-    }
+        "js": "node --harmony",
+        "ts": "ts-node --files"
+    },
+    "watch": [
+        "server/"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "ts"
 }
