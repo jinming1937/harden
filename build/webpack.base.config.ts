@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const Path_Reg = /(\/|\/\/|\\|\\\\)/g;
 
-export const PORT = 8088;
+export const PORT = 9977;
 
 export const publicPath = '/public/views/'
 

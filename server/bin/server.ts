@@ -18,7 +18,7 @@ if (isDev) {
 
     // 使用 webpack-hot-middleware 支持热更新
     app.use(webpackHotMiddleware(compiler, {
-        noInfo: true
+        log: false,
     }))
 }
 
@@ -36,4 +36,4 @@ app.use((req, res, next) => {
     res.send(`Service Error`)
 })
 
-app.listen(PORT, () => console.log(`development is listening on port 8088`))
+app.listen(PORT, () => console.log(`development is listening on port ${PORT}`))
