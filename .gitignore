@@ -52,3 +52,5 @@ npm-offline-mirror
 
 test/ci.whistle.js
 test-report
+
+package-lock.json

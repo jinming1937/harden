@@ -113,7 +113,7 @@ export default {
 
         new FriendlyErrorsPlugin({
             compilationSuccessInfo: {
-                messages: [`Your application is running here: http://127.0.0.1:8088`],
+                messages: [`Your application is running here: http://127.0.0.1:${PORT}`],
                 notes: []
             },
             onErrors(_: Severity, errors: string) {
